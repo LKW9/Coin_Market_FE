@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://apis.data.go.kr/:path*"
+      "destination": "https://coinview.store/:path*"
     },
     {
       "source": "/api/:path*/",
-      "destination": "https://apis.data.go.kr/:path*/"
+      "destination": "https://coinview.store/:path*/"
     }
   ]
 }
