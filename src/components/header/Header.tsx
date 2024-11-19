@@ -80,7 +80,7 @@ export default function Header() {
 
   useEffect(() => {
     axios
-      .get("/api/favorites/checkcookie", {
+      .get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcookie", {
         headers: {
           "Content-Type": "application/json",
         },

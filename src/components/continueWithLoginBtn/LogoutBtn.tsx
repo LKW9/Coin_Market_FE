@@ -6,7 +6,7 @@ const LogoutBtn = () => {
   const [photo, setPhoto] = useState('')
   useEffect(() => {
     axios
-    .post("/api/user/userprofile")
+    .post("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/user/userprofile")
       .then((response) => {
       console.log(response.data.decodedToken.user)
         setEmail(response.data.decodedToken.user.email)
@@ -18,7 +18,7 @@ const LogoutBtn = () => {
 
 
   const redirectAfterLogoutPath = () => {
-    window.location.href = "/api/auth/logout";
+    window.location.href = "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/auth/logout";
   };
 
   return (

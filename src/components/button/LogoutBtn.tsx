@@ -9,7 +9,7 @@ const LogoutBtn = () => {
   const [photo, setPhoto] = useState("");
   useEffect(() => {
     axios
-      .get("/api/favorites/checkcookie", {
+      .get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcookie", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -18,7 +18,7 @@ const LogoutBtn = () => {
       .then((response) => {
         if (response.data) {
           axios
-            .post("/api/user/userprofile")
+            .post("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/user/userprofile")
             .then((response) => {
               setEmailFront(response.data.decodedToken.user.email.split("@")[0]);
               setEmailBack(response.data.decodedToken.user.email.split("@")[1]);
@@ -33,7 +33,7 @@ const LogoutBtn = () => {
   }, []);
 
   const redirectAfterLogoutPath = () => {
-    window.location.href = "/api/auth/logout";
+    window.location.href = "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/auth/logout";
   };
   return (
     <div className="flex-1 flex flex-col sm:flex-row items-center sm:justify-end md:justify-center h-full p-[5px] min-w-[170px]">

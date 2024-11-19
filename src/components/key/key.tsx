@@ -21,7 +21,7 @@ const Key:React.FC<KeyProps> = ({setIsKeyInDB}) => {
     setIsKeyInDB(true);
     axios
       .post(
-        "/api/portfolio/apikey",
+        "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/apikey",
         { connectKey, secretKey },
         {
           headers: {

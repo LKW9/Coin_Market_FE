@@ -3,6 +3,13 @@ import { useDarkMode } from "../../context/Dark-mode";
 export default function Footer() {
   const { darkMode } = useDarkMode();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <footer className="overflow-x-hidden overflow-y-hidden md:h-[173px] ">
       <div className=" shadow-md shadow-slate-200 my-[6px] mx-[2px] rounded-lg border-t-2 border-solid border-slate-200">
@@ -12,11 +19,12 @@ export default function Footer() {
               darkMode ? "dark" : "light"
             }`}
           >
-            <div className="flex items-end md:items-center justify-center md:flex-col w-[300px]  ">
+            <div className="flex items-end md:items-center justify-center md:flex-col w-[300px]">
               <div className="w-[40%] md:w-[100px]">
-                <img
+                <img className="cursor-pointer"
                   src={`${darkMode ? "/footer-dark.png" : "/footer.png"}`}
                   alt={`${darkMode ? "Footer-dark" : "Footer"}`}
+                  onClick={scrollToTop}
                 />
               </div>
               <div

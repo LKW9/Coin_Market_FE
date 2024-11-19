@@ -24,7 +24,10 @@ export const WalletConnectionModal: React.FC<WalletModalProps> = ({
 
   const onWalletAddress = () => {
     axios
-      .post("/api/wallet", { walletAddress })
+      .post(
+        "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/wallet",
+        { walletAddress }
+      )
       .then((response) => {
         console.log(
           "Wallet address successfully sent to the API.",

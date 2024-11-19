@@ -37,7 +37,7 @@ export const NowPrice: React.FC = () => {
   };
 
   const createCoin = (name: string) => {
-    axios.post('/api/favorites/checkcoin', { name }, {
+    axios.post('https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcoin', { name }, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -54,14 +54,14 @@ export const NowPrice: React.FC = () => {
   }
 
   useEffect(() => {
-    axios.get('/api/favorites/checkcookie', {
+    axios.get('https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcookie', {
       headers: {
         'Content-Type': 'application/json',
       },
       withCredentials: true
     }).then((response) => {
       if (response.data) {
-        axios.get('/api/favorites/viewcoin', {
+        axios.get('https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/viewcoin', {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -105,9 +105,9 @@ export const NowPrice: React.FC = () => {
               style={{ zIndex: 1 }}
             >
               <tr
-                className={`${darkMode}shadow-md md:shadow-md w-[100%] h-[30px]`}
+                className={`${darkMode ? "text-black":"text-white"}  shadow-md md:shadow-md w-[100%] h-[30px]`}
               >
-                <th className="md:flex-1 md:py-[6px] md:table-cell w-[10%] text-[10px] sm:text-[12px] md:text-[15px] lg:text-[17px]">
+                <th className={`md:flex-1 md:py-[6px] md:table-cell w-[10%] text-[10px] sm:text-[12px] md:text-[15px] lg:text-[17px]`}>
                   즐겨찾기
                 </th>
                 <th className="md:flex-1 md:py-[3px] w-[10%] text-[10px] sm:text-[12px] md:text-[15px] lg:text-[17px]">

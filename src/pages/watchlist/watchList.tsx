@@ -30,7 +30,7 @@ export const WatchList: React.FC = () => {
   const createCoin = (name: string) => {
     axios
       .post(
-        "/api/favorites/checkcoin",
+        "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcoin",
         { name },
         {
           headers: {
@@ -51,7 +51,7 @@ export const WatchList: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("/api/favorites/checkcookie", {
+      .get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcookie", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -60,7 +60,7 @@ export const WatchList: React.FC = () => {
       .then((response) => {
         if (response.data) {
           axios
-            .get("/api/favorites/viewcoin", {
+            .get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/viewcoin", {
               headers: {
                 "Content-Type": "application/json",
               },

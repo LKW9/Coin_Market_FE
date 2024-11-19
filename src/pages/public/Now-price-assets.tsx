@@ -21,9 +21,10 @@ export default function NowPriceAssets() {
   const { currency } = useParams();
   const coinName: any = currency;
   const { darkMode } = useDarkMode();
-  const [coinData, setCoinData] = useState(["a"]);
-  const [portfolioData, setPortfolioData] = useState(["a"]);
+  const [coinData, setCoinData] = useState(['a']);
+  const [portfolioData, setPortfolioData] = useState(['a']);
   const selectedCoins = [coinName];
+  const [isLogin, setIsLogin] = useState(false);
 
   const link = () => {
     const currentURL = window.location.href;
@@ -31,17 +32,22 @@ export default function NowPriceAssets() {
   };
 
   const coinAlert = (coinName: string) => {
-    if (coinData.indexOf(coinName) != -1) {
-      alert(`${coinName}이 즐겨찾기에 삭제되었습니다`);
-    } else {
-      alert(`${coinName}이 즐겨찾기에 추가되었습니다`);
+    if(!isLogin){
+      alert("로그인이 필요합니다.")
+    }else{
+      if (coinData.indexOf(coinName) != -1) {
+        alert(`${coinName}이 즐겨찾기에 삭제되었습니다`);
+      } else {
+        alert(`${coinName}이 즐겨찾기에 추가되었습니다`);
+      }
     }
+    
   }
 
   const createCoin = (name: any) => {
     axios
       .post(
-        "/api/favorites/checkcoin",
+        "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcoin",
         { name },
         {
           headers: {
@@ -61,12 +67,16 @@ export default function NowPriceAssets() {
   };
 
   const portfolioAlert = async (coinName: string) => {
-    if (portfolioData.indexOf(coinName) != -1) {
-      deleteSelectedCoinsToServer(coinName);
-      alert(`${coinName}이 포트폴리오에 삭제되었습니다`);
-    } else {
-      sendSelectedCoinsToServer();
-      alert(`${coinName}이 포트폴리오에 추가되었습니다`);
+    if(!isLogin){
+      alert("로그인이 필요합니다.")
+    }else{
+      if (portfolioData.indexOf(coinName) != -1) {
+        deleteSelectedCoinsToServer(coinName);
+        alert(`${coinName}이 포트폴리오에 삭제되었습니다`);
+      } else {
+        sendSelectedCoinsToServer();
+        alert(`${coinName}이 포트폴리오에 추가되었습니다`);
+      }
     }
   }
 
@@ -77,14 +87,14 @@ export default function NowPriceAssets() {
     };
 
     axios
-      .post("/api/portfolio/create", data, {
+      .post("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/create", data, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       })
       .then((_response) => {
-        axios.get("/api/portfolio/mylist", {
+        axios.get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/mylist", {
           headers: {
             "Content-Type": "application/json",
           },
@@ -103,7 +113,7 @@ export default function NowPriceAssets() {
   };
 
   const deleteSelectedCoinsToServer = (coinName: string) => {
-    axios.post("/api/portfolio/delete", { coinName }, {
+    axios.post("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/delete", { coinName }, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -118,16 +128,17 @@ export default function NowPriceAssets() {
 
   useEffect(() => {
     axios
-      .get("/api/favorites/checkcookie", {
+      .get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/checkcookie", {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       })
       .then((response) => {
+        setIsLogin(response.data)
         if (response.data) {
           axios
-            .get("/api/favorites/viewcoin", {
+            .get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/favorites/viewcoin", {
               headers: {
                 "Content-Type": "application/json",
               },
@@ -142,7 +153,7 @@ export default function NowPriceAssets() {
         }
 
         if (response.data) {
-          axios.get("/api/portfolio/mylist", {
+          axios.get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/mylist", {
             headers: {
               "Content-Type": "application/json",
             },

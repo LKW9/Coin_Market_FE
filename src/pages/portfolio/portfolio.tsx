@@ -69,7 +69,7 @@ export const PortFolioTracker = () => {
 
   const isKeyInDBFunction = () => {
     axios
-      .get("/api/user/apikey", {
+      .get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/user/apikey", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -92,7 +92,7 @@ export const PortFolioTracker = () => {
   setisDataSuccess(false);
 
   try {
-    const response = await axios.get("/api/portfolio/mylist", {
+    const response = await axios.get("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/mylist", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -103,7 +103,7 @@ export const PortFolioTracker = () => {
       let attempts = 30;
       while (attempts > 0) {
         try {
-          const response = await axios.get(`/api/portfolio/list/${coin}`, {
+          const response = await axios.get(`https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/list/${coin}`, {
             headers: {
               "Content-Type": "application/json",
             },
@@ -136,7 +136,7 @@ export const PortFolioTracker = () => {
 };
 
   const deleteSelectedCoinsToServer = (coinName: string) => { 
-    axios.post("/api/portfolio/delete", { coinName }, {
+    axios.post("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/delete", { coinName }, {
       headers: {
           "Content-Type": "application/json",
         },
@@ -157,7 +157,7 @@ export const PortFolioTracker = () => {
     };
 
     axios
-      .post("/api/portfolio/create", data, {
+      .post("https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/portfolio/create", data, {
         headers: {
           "Content-Type": "application/json",
         },

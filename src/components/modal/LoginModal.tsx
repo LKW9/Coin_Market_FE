@@ -39,15 +39,18 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   };
 
   const redirectToNaverAutoPath = () => {
-    window.location.href = "/api/auth/naver/callback";
+    window.location.href =
+      "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/auth/naver/callback";
   };
 
   const redirectToKakaoAutoPath = () => {
-    window.location.href = "/api/auth/kakao/callback";
+    window.location.href =
+      "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/auth/kakao/callback";
   };
 
   const redirectToGoogleAutoPath = () => {
-    window.location.href = "/api/auth/google/callback";
+    window.location.href =
+      "https://port-0-coin-market-be-12fhqa2llob5p0if.sel5.cloudtype.app/auth/google/callback";
   };
 
   useEffect(() => {
